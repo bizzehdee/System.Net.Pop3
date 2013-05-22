@@ -29,6 +29,22 @@ namespace System.Net.Pop3
 {
   public class Pop3Attachment
   {
+    public Pop3Attachment()
+    {
+      this.Name = "";
+      this.Type = "";
+      this.Encoding = "";
+      this.Data = null;
+    }
+
+    public Pop3Attachment(String name, String type, String encoding, byte[] data)
+    {
+      this.Name = name;
+      this.Type = type;
+      this.Encoding = encoding;
+      this.Data = data;
+    }
+
     public String Name { get; set; }
     public String Type { get; set; }
     public String Encoding { get; set; }

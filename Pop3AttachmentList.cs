@@ -35,5 +35,31 @@ namespace System.Net.Pop3
     {
 
     }
+
+    public void Add(String name, String type, String encoding, byte[] data)
+    {
+      base.Add(new Pop3Attachment(name, type, encoding, data));
+    }
+
+    public Pop3Attachment Find(String name)
+    {
+      foreach (Pop3Attachment i in this)
+      {
+        if (i.Name == name)
+        {
+          return i;
+        }
+      }
+
+      return null;
+    }
+
+    public Pop3Attachment this[String name]
+    {
+      get
+      {
+        return Find(name);
+      }
+    }
   }
 }
