@@ -36,6 +36,11 @@ namespace System.Net.Pop3
 
     }
 
+    public void Add(String n, String v)
+    {
+      base.Add(new Pop3Header(n, v));
+    }
+
     public String this[String index]
     {
       get {
@@ -54,7 +59,7 @@ namespace System.Net.Pop3
             return;
           }
         }
-        this.Add(new Pop3Header(index, value));
+        this.Add(index, value);
       }
     }
   }

@@ -205,10 +205,7 @@ namespace System.Net.Pop3
           m_current_header = m_current_header.Trim() + " " + m_lines[++i].Trim();
         }
 
-        
         String[] m_part = m_current_header.Split(m_hseps, 2);
-
-        System.Diagnostics.Debug.WriteLine(m_current_header);
 
         Headers.Add(new Pop3Header(m_part[0], m_part[1].Trim()));
       }
@@ -242,8 +239,10 @@ namespace System.Net.Pop3
           {
             Date = DateTime.Parse(h.Value);
           }
-          catch (Exception)
+          catch (Exception e)
           {
+            System.Diagnostics.Debug.WriteLine(e.Message);
+
             Date = DateTime.Now;
           }
         }
